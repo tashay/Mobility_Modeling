@@ -17,10 +17,13 @@ volume<- SampleData$volume
 SampleData['CumulativeVolume']<-cumulative(volume)
 
 #Draw a cumulative curve (x-axis = time, y-axis = cum # veh)
-plot(SampleData$CumulativeVolume,main='Time vs Cumulative Vehicles', xlab = "Time (minutes)", ylab = "Cumulative Volume",lty=2, col=4, xaxt='n')
+SampleData['Time'] = seq(15,360,by = 15)
+plot(SampleData$Time,SampleData$CumulativeVolume,main='Time vs Cumulative Vehicles', xlab = "Time (minutes)", ylab = "Cumulative Volume",lty=2, col=4)
+grid(5,8)
+
 
 #Draw a scatter plot (x-axis = volume, y-axis = speed). Highlight minimum speed with color red.
 minimum<-subset(SampleData, speed==min(SampleData$speed))
 plot(SampleData$volume, SampleData$speed, main='Volume vs. Speed',xlab = "Volume (veh/15min)", ylab = "Speed (mph)" )
 points(minimum,col='red', pch=17)
-
+grid(5,8)
